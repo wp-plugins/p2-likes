@@ -38,6 +38,9 @@ If you like my plugins feel free to donate [here](https://www.paypal.com/cgi-bin
 
 == Changelog ==
 
+= 1.0.2 =
+* Bug fix: Fixed error when counting comments
+
 = 1.0.1 =
 * Bug fix: Removed wp_get_theme() until 3.4
 
@@ -45,6 +48,9 @@ If you like my plugins feel free to donate [here](https://www.paypal.com/cgi-bin
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+* Bug fix: Fixed error when counting comments
 
 = 1.0.1 =
 * Bug fix: Removed wp_get_theme() until 3.4
