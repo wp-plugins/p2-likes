@@ -33,8 +33,9 @@
 	text-decoration: none !important;
 }
 
-.p2-likes-user img {
+#postlist .p2-likes-user img {
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
 	border-radius: 100px;
+	margin: 0;
 }

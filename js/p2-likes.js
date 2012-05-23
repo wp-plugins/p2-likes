@@ -14,10 +14,10 @@ function p2Likes( type, id) {
 				var likeText = jQuery('.p2-likes-' + typeslug + '-' + id + ' .p2-likes-like').html();
 				switch (likeText) {
 					case 'Like':
-					  jQuery('.p2-likes-' + typeslug + '-' + id + ' .p2-likes-like').html('Unlike');
+					  jQuery('.p2-likes-' + typeslug + '-' + id + ' .p2-likes-like').html( p2_likes.unlike );
 					  break;
 					case 'Unlike':
-					  jQuery('.p2-likes-' + typeslug + '-' + id + ' .p2-likes-like').html('Like');
+					  jQuery('.p2-likes-' + typeslug + '-' + id + ' .p2-likes-like').html( p2_likes.like);
 					  break;
 				}
 				

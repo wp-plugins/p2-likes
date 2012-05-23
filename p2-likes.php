@@ -3,7 +3,7 @@
 Plugin Name: P2 Likes
 Plugin URI: http://scottbasgaard.com/
 Description: "P2 Likes" is a way to give positive feedback on threads you care about on P2.
-Version: 1.0.2
+Version: 1.0.3
 Author: Scott Basgaard
 Author URI: http://scottbasgaard.com/
 License: GPL2
@@ -55,7 +55,7 @@ function p2_likes_action_links() {
 	$postmeta = get_post_meta( $post->ID, '_p2_likes', true );
 	$users = p2_likes_generate_users_html($postmeta);
 	$like_count = ( $postmeta ? count($postmeta) : 0 );
-	$like_text = ( $postmeta && in_array( $current_user->ID, $postmeta ) ? 'Unlike' : 'Like'); 
+	$like_text = ( $postmeta && in_array( $current_user->ID, $postmeta ) ? __( 'Unlike', 'p2-likes' ) : __( 'Like', 'p2-likes' ) );
 	echo "<div class='p2-likes-link'> | <a rel='nofollow' class='p2-likes-post p2-likes-post-".$post->ID."' href='". get_permalink($post). "' title='".$like_text."' onclick='p2Likes(0,".$post->ID."); return false;'><span class='p2-likes-like'>".$like_text."</span> (<span class='p2-likes-count'>".$like_count."</span>)</a><div class='p2-likes-box'>".$users."</div></div>";
 }
 
@@ -66,13 +66,19 @@ function p2_likes_comment_reply_link( $link, $args, $comment, $post ) {
 	$commentmeta = get_comment_meta( $comment->comment_ID, '_p2_likes', true );
 	$users = p2_likes_generate_users_html($commentmeta);
 	$like_count = ( $commentmeta ? count($commentmeta) : 0 );
-	$like_text = ( $commentmeta && in_array( $current_user->ID, $commentmeta ) ? 'Unlike' : 'Like'); 
+	$like_text = ( $commentmeta && in_array( $current_user->ID, $commentmeta ) ? __( 'Unlike', 'p2-likes' ) : __( 'Like', 'p2-likes' ) );
 	$output = "<div class='p2-likes-link'> | <a rel='nofollow' class='p2-likes-link p2-likes-comment p2-likes-comment-".$comment->comment_ID."' href='". get_permalink($post). "' title='".$like_text."' onclick='p2Likes(1,".$comment->comment_ID."); return false;'><span class='p2-likes-like'>".$like_text."</span> (<span class='p2-likes-count'>".$like_count."</span>)</a><div class='p2-likes-box'>".$users."</div></div>";
 	return $link . $output;
 }
 
 function p2_likes_enqueue_scripts() {
+	$translation_array = array(
+		'unlike' => __( 'Unlike', 'p2-likes' ),
+		'like'   => __( 'Like', 'p2-likes' ),
+	);
+
 	wp_enqueue_script( 'p2-likes', P2LIKES_URL . '/js/p2-likes.js', array('jquery') );
+	wp_localize_script( 'p2-likes', 'p2_likes', $translation_array );
 }
 
 function p2_likes_enqueue_styles() {
