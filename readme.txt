@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: p2, likes
 Requires at least: 3.0
 Tested up to: 3.3.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 
 "P2 Likes" is a way to give positive feedback on threads you care about on P2.
 
@@ -38,10 +38,14 @@ If you like my plugins feel free to donate [here](https://www.paypal.com/cgi-bin
 
 == Changelog ==
 
+= 1.0.4 =
+* Bug Fix: Added missing load_plugin_textdomain() (props Zé Fontainhas)
+* Bug Fix: Added support for Gravatar hovercards (props Zé Fontainhas)
+* Cleaned up jQuery
+
 = 1.0.3 =
 * Enhancement: Added localization (props Coen Jacobs)
 * Bug fix: Modified CSS selector for avatars
-
 
 = 1.0.2 =
 * Bug fix: Fixed error when counting comments
@@ -53,6 +57,11 @@ If you like my plugins feel free to donate [here](https://www.paypal.com/cgi-bin
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+* Bug Fix: Added missing load_plugin_textdomain() (props Zé Fontainhas)
+* Bug Fix: Added support for Gravatar hovercards (props Zé Fontainhas)
+* Cleaned up jQuery
 
 = 1.0.3 =
 * Enhancement: Added localization (props Coen Jacobs)

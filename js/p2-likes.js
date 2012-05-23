@@ -32,35 +32,15 @@ function p2Likes( type, id) {
 
 jQuery(function() {
 	
-	var p2BoxFocus = false;
-	
-	jQuery('.p2-likes-link').live({
-		mouseenter:
-		function() {
-			jQuery('.p2-likes-box:not(:empty)', this).fadeIn();
-		},
-		mouseleave:
-		function() {
-			if (p2BoxFocus)
-			 jQuery('.p2-likes-box', this).fadeOut();
-		}
+	jQuery('.p2-likes-link').hover(function() {
+		jQuery('.p2-likes-box:not(:empty)', this).fadeIn();
 	});
 	
 	jQuery('.p2-likes-box').live({
-		mouseenter:
-		function() {
-			p2BoxFocus = true;
-		},
-		mouseleave:
-		function() {
-			p2BoxFocus = false;
-			jQuery('.p2-likes-box').fadeOut();
+		mouseenter: function() {},
+		mouseleave: function() {
+			jQuery(this).fadeOut();
 		}
-	});
-	
-	jQuery('body').hover(function() {
-		if (p2BoxFocus)
-			jQuery('.p2-likes-box').fadeOut();
 	});
 
 });

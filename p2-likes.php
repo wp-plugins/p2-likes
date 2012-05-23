@@ -3,7 +3,7 @@
 Plugin Name: P2 Likes
 Plugin URI: http://scottbasgaard.com/
 Description: "P2 Likes" is a way to give positive feedback on threads you care about on P2.
-Version: 1.0.3
+Version: 1.0.4
 Author: Scott Basgaard
 Author URI: http://scottbasgaard.com/
 License: GPL2
@@ -32,11 +32,13 @@ define( 'P2LIKES_DIR', plugin_dir_path( __FILE__ ) );
 function p2_likes_init() {
 	
 	// For 3.4
-	// $current_theme = wp_get_theme();
-	// $theme_name = $current_theme->name;
-	// $theme_parent = $current_theme->parent_theme;
-	// if ( $theme_name == "P2" || $theme_parent == "P2" ) :
-	// endif;
+	// if ( function_exists( 'wp_get_theme' ) ) {
+	// 	$current_theme = wp_get_theme();
+	// 	$theme_name = $current_theme->name;
+	// 	$theme_parent = $current_theme->parent_theme;
+	// 	if ( $theme_name == "P2" || $theme_parent == "P2" ) {
+	// 	}
+	// }
 	
 	if ( is_user_logged_in() ) {
 		add_action( 'p2_action_links', 'p2_likes_action_links' );
@@ -45,9 +47,12 @@ function p2_likes_init() {
 		add_action( 'wp_print_styles', 'p2_likes_enqueue_styles' );
 		add_action( 'wp_head', 'p2_likes_head' );
 	}
+	
+	// L10n
+	load_plugin_textdomain( 'p2-likes', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		
 }
-add_action( 'init', 'p2_likes_init' );
+add_action( 'plugins_loaded', 'p2_likes_init' );
 
 function p2_likes_action_links() {
 	global $post;
