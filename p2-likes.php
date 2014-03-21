@@ -3,7 +3,7 @@
 Plugin Name: P2 Likes
 Plugin URI: http://scottbasgaard.com/
 Description: "P2 Likes" is a way to give positive feedback on threads you care about on P2.
-Version: 1.0.5
+Version: 1.0.6
 Author: Scott Basgaard
 Author URI: http://scottbasgaard.com/
 License: GPL2
@@ -105,4 +105,6 @@ function p2_likes_generate_users_html($users) {
 	return $output;
 }
 
-require_once( P2LIKES_DIR . '/ajax.php' );
+if ( is_admin() && defined('DOING_AJAX') && DOING_AJAX ) {
+	require_once( P2LIKES_DIR . '/ajax.php' );
+}
